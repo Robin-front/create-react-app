@@ -20,6 +20,17 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const cssnano = require('cssnano');
+const px2rem = require('postcss-px2rem');
+
+const argv = process.argv.slice(2);
+let isMobile;
+for(let arg of argv){
+  if (arg.indexOf('--device') !== -1) {
+    isMobile = arg.split('=')[1] === 'mobile';
+    console.log('isMobile', isMobile);
+  }
+}
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -228,6 +239,14 @@ module.exports = {
                               'not ie < 9', // React doesn't support IE8 anyway
                             ],
                             flexbox: 'no-2009',
+                          }),
+                          (isMobile?px2rem({remUnit: 75}):function(){}),
+                          cssnano({
+                            discardComments: { // 删除所有css注释
+                              removeAll: true
+                            },
+                            safe: true,
+                            sourcemap: false
                           }),
                         ],
                       },

@@ -1,14 +1,14 @@
 {
-  "name": "react-scripts",
+  "name": "robin-react-scripts",
   "version": "1.0.14",
   "description": "Configuration and scripts for Create React App.",
-  "repository": "facebookincubator/create-react-app",
+  "repository": "Robin-front/create-react-app",
   "license": "MIT",
   "engines": {
     "node": ">=6"
   },
   "bugs": {
-    "url": "https://github.com/facebookincubator/create-react-app/issues"
+    "url": "https://github.com/Robin-front/create-react-app/issues"
   },
   "files": [
     "bin",
@@ -21,6 +21,8 @@
     "react-scripts": "./bin/react-scripts.js"
   },
   "dependencies": {
+    "cssnano": "^3.10.0",
+    "postcss-px2rem": "^0.3.0",
     "autoprefixer": "7.1.2",
     "babel-core": "6.25.0",
     "babel-eslint": "7.2.3",
